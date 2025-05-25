@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +13,6 @@ public class SlotGridResizer : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    IEnumerator Start()
-    {
-        // Wait one frame
-        yield return null;
-        Resize();
-    }
-
-    // Update the height
     public void Resize()
     {
         int childCount = transform.childCount;
@@ -47,5 +38,4 @@ public class SlotGridResizer : MonoBehaviour
         // Apply the new height to the RectTransform
         rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, totalHeight);
     }
-
 }
