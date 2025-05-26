@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class ItemMovement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [HideInInspector] public Transform parentTransform;
 

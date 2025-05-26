@@ -13,6 +13,9 @@ public class SlotController : MonoBehaviour, IDropHandler
 
     void DropItem(PointerEventData eventData)
     {
-        eventData.pointerDrag.GetComponent<ItemController>().parentTransform = transform;
+        ItemMovement itemController = eventData.pointerDrag.GetComponent<ItemMovement>();
+        if (itemController == null)
+            return;
+        itemController.parentTransform = transform;
     }
 }
