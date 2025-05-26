@@ -31,12 +31,15 @@ public class ItemMovement : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
     {
         parentTransform = transform.parent;
 
+        transform.parent.GetComponent<SlotController>().DeattachItem();
+
         // Temporarily reparent for drag
         transform.SetParent(rootScrollRect.transform, false);
         // Disable scrolling during drag
         rootScrollRect.enabled = false;
         // Stop object raycasts
         canvasGroup.blocksRaycasts = false;
+
     }
 
     public void OnDrag(PointerEventData eventData)

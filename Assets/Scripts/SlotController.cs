@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class SlotController : MonoBehaviour, IDropHandler
 {
     [SerializeField] GameObject itemPrefab;
-
+    [HideInInspector] public ItemController itemcontroller;
     public void OnDrop(PointerEventData eventData)
     {
         // Only allow drop if this slot has no child item
@@ -24,16 +24,32 @@ public class SlotController : MonoBehaviour, IDropHandler
         itemMovement.parentTransform = transform;
 
         // Save the slot name in the item's data for persistence
-        itemMovement.GetComponent<ItemController>().SaveData(gameObject.name);
+        itemcontroller = itemMovement.GetComponent<ItemController>();
+        itemcontroller.SaveData(gameObject.name);
     }
+
+    public void DeattachItem()
+    {
+        itemcontroller = null;
+    }    
 
     private void Start()
     {
         // If PlayerPrefs contains a saved item for this slot, instantiate it
         if (PlayerPrefs.GetString(gameObject.name, "") != "")
         {
-            Instantiate(itemPrefab, transform);
-
+            CreateItem();
         }
+    }
+
+    public void AddItem(ItemDataScriptable _itemData, int _number)
+    {
+        CreateItem();
+        itemcontroller.UpdateData(_itemData, _number);
+    }
+
+    void CreateItem()
+    {
+        itemcontroller = Instantiate(itemPrefab, transform).GetComponent<ItemController>();
     }
 }

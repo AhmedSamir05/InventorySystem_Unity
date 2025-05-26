@@ -5,9 +5,10 @@ public class ItemController : MonoBehaviour
 {
     // Name of the slot this item belongs to
     string slotName = "";                
-    int number;                         
-    [SerializeField] ItemDataScriptable itemData; 
-    [SerializeField] Image itemImg;     
+    [HideInInspector] public int number;                         
+    [HideInInspector] public ItemDataScriptable itemData; 
+    [SerializeField] Image itemImg;
+    [SerializeField] TMPro.TextMeshProUGUI itemsNumTxt;
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class ItemController : MonoBehaviour
     {
         slotName = transform.parent.name;  // Get the slot name from the parent transform
 
-        if (PlayerPrefs.HasKey(slotName))
+        if (PlayerPrefs.GetString(slotName,"")!="")
         {
             string itemName = PlayerPrefs.GetString(slotName);
             // Load item data by name
@@ -41,7 +42,19 @@ public class ItemController : MonoBehaviour
             // Update UI image sprite
             itemImg.sprite = itemData.itemImg;
             // Load saved number
-            number = PlayerPrefs.GetInt(slotName + "_Number", number); 
+            number = PlayerPrefs.GetInt(slotName + "_Number", number);
+            itemsNumTxt.text = number.ToString();
         }
+    }
+
+    public void UpdateData(ItemDataScriptable _itemData, int _number)
+    {
+        itemData = _itemData;
+        // Update UI image sprite
+        itemImg.sprite = itemData.itemImg;
+        // Load saved number
+        number += _number;
+        itemsNumTxt.text = number.ToString();
+        SaveData(transform.parent.name);
     }
 }

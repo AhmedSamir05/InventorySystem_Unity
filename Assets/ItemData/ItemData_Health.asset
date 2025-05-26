@@ -18,4 +18,4 @@ MonoBehaviour:
   maxStack: 50
   header: Health Bottle
   discription: Regenrates your health very fast!
-  price: 50
+  price: 10
