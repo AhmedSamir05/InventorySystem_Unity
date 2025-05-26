@@ -10,4 +10,5 @@ public class ItemDataScriptable : ScriptableObject
     public string header;
     [TextArea]
     public string discription;
+    public int price;
 }

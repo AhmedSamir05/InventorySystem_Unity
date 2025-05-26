@@ -18,3 +18,4 @@ MonoBehaviour:
   maxStack: 0
   header: The Legendry Bow
   discription: This bow is made of rare trees!
+  price: 100

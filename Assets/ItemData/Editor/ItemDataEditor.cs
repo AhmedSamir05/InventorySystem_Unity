@@ -26,6 +26,8 @@ public class ItemDataEditor : Editor
         EditorGUILayout.LabelField("Description");
         itemData.discription = EditorGUILayout.TextArea(itemData.discription, GUILayout.Height(60));
 
+        itemData.price = EditorGUILayout.IntField("Price", itemData.price);
+
         // Mark as dirty so changes are saved
         if (GUI.changed)
         {

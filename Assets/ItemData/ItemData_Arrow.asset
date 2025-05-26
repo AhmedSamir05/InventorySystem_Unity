@@ -18,3 +18,4 @@ MonoBehaviour:
   maxStack: 100
   header: Wooden Arrow
   discription: This arrow is good for your weak enemies!
+  price: 10
