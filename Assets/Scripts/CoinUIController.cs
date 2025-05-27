@@ -1,6 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
-
+[DefaultExecutionOrder(2000)]
 public class CoinUIController : MonoBehaviour
 {
     [SerializeField] private TMPro.TextMeshProUGUI coinText;

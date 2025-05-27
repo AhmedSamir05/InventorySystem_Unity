@@ -50,6 +50,9 @@ public class SlotController : MonoBehaviour, IDropHandler
 
     void CreateItem()
     {
-        itemcontroller = Instantiate(itemPrefab, transform).GetComponent<ItemController>();
+        if (transform.childCount == 0)
+        {
+            itemcontroller = Instantiate(itemPrefab, transform).GetComponent<ItemController>();
+        }
     }
 }
